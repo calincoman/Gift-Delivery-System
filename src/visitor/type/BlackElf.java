@@ -1,10 +1,11 @@
-package visitor;
+package visitor.type;
 
 import common.Constants;
 import database.Database;
 import distribution.recipient.Child;
+import visitor.BudgetElf;
 
-public class PinkElf extends BudgetElf {
+public class BlackElf extends BudgetElf {
 
     @Override
     public void modifyBudget(Child child) {
@@ -12,10 +13,9 @@ public class PinkElf extends BudgetElf {
         Double childBudget = Database.getInstance().getChildBudgets().get(child);
 
         // calculate the new budget
-        Double newChildBudget = childBudget + childBudget * Constants.ELF_BUDGET_PERCENTAGE;
+        Double newChildBudget = childBudget - childBudget * 30 / 100;
 
         // update the budget
         Database.getInstance().getChildBudgets().put(child, newChildBudget);
     }
-
 }

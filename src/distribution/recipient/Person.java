@@ -21,6 +21,13 @@ public abstract class Person {
         this.city = childInputData.getCity();
     }
 
+    public Person(final Child.Builder childBuilder) {
+        this.lastName = childBuilder.getLastName();
+        this.firstName = childBuilder.getFirstName();
+        this.age = childBuilder.getAge();
+        this.city = childBuilder.getCity();
+    }
+
     /**
      * Increases age by 1
      */
@@ -42,5 +49,21 @@ public abstract class Person {
 
     public final String getCity() {
         return city;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

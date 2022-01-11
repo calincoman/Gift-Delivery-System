@@ -3,6 +3,8 @@ package database;
 import distribution.recipient.Child;
 import distribution.shipment.Gift;
 import enums.GiftStrategyType;
+import solve.YearCounter;
+import status.change.AnnualChange;
 import status.update.ChildUpdate;
 
 import java.util.ArrayList;
@@ -26,6 +28,26 @@ public class DatabaseUpdate {
     public void eliminateYoungAdults() {
         // eliminate children that are young adults
         Database.getInstance().getChildren().removeIf(child -> child.isYoungAdult());
+    }
+
+    public void updateAllData() {
+        // get current year
+        Integer currentYear = YearCounter.getInstance().getCurrentYear();
+
+        // the annual changes list is indexed from 0, so get the element from year - 1 position
+        AnnualChange annualChange = Database.getInstance().getAnnualChanges().get(currentYear - 1);
+        // increase age of all children by 1
+        this.increaseAge();
+        // eliminate children that have become young adults
+        this.eliminateYoungAdults();
+
+        // do the updates
+        this.updateSantaBudget(annualChange.getNewSantaBudget());
+        this.addNewGifts(annualChange.getNewGifts());
+        this.addNewChildren(annualChange.getNewChildren());
+        this.updateChildren(new ArrayList<ChildUpdate>(annualChange
+                .getChildrenUpdates()));
+        this.updateGiftStrategy(annualChange.getGiftStrategy());
     }
 
     /**

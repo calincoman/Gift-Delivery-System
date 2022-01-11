@@ -39,11 +39,11 @@ public final class Utils {
         };
     }
 
-    public boolean isBudgetElf(ElvesType elf) {
+    public static boolean isBudgetElf(ElvesType elf) {
         return (elf.equals(ElvesType.BLACK) || elf.equals(ElvesType.PINK));
     }
 
-    public boolean isGiftElf(ElvesType elf) {
+    public static boolean isGiftElf(ElvesType elf) {
         return (elf.equals(ElvesType.YELLOW));
     }
 }

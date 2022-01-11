@@ -2,12 +2,12 @@ package strategy.delivery;
 
 import database.Database;
 import distribution.recipient.Child;
-import distribution.shipment.Gift;
+
 import strategy.comparator.CityNameComparator;
 import strategy.comparator.CityScoreComparator;
 import strategy.comparator.IdComparator;
 import strategy.comparator.MultiComparator;
-import strategy.comparator.NiceScoreComparator;
+
 
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -39,6 +39,9 @@ public final class Database {
      */
     private GiftStrategyType giftStrategy = GiftStrategyType.ID;
 
+    /**
+     * Private constructor so that the class cannot be instantiated outside its scope
+     */
     private Database() {
     }
 

@@ -56,7 +56,8 @@ public final class DatabaseSearch {
     }
 
     /**
-     * Search in the database the cheapest gift from a given category which is in a budget
+     * Search in the database the cheapest gift from a given category which is in a budget asn
+     * has quantity greater than 0
      * @param category the category of the gift
      * @param budget the budget which the gift must hold
      * @return a Gift object if the gift was found, null otherwise
@@ -66,6 +67,8 @@ public final class DatabaseSearch {
         return Database.getInstance().getGifts().stream()
                 // filter after the criteria
                 .filter(gift -> gift.getCategory().equals(category) && gift.getPrice() <= budget)
+                // get only the gifts that have quantity > 0
+                .filter(gift -> gift.getQuantity() > 0)
                 // get the gift with the smallest price
                 .min(Comparator.comparingDouble(Gift::getPrice))
                 .orElse(null);

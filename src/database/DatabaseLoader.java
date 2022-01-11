@@ -47,9 +47,14 @@ public final class DatabaseLoader {
     public static void loadChildren(final InputData inputData) {
         ArrayList<Child> children = new ArrayList<Child>();
 
-        // make a deep copy
+//        // make a deep copy
+//        inputData.getChildren().forEach(childInputData ->
+//                children.add(new Child(childInputData)));
+        // make a depp copy
         inputData.getChildren().forEach(childInputData ->
-                children.add(new Child(childInputData)));
+                children.add(new Child.Builder(childInputData)
+                        .withNiceScoreBonus(childInputData.getNiceScoreBonus())
+                        .build()));
 
         Database.getInstance().addChildren(children);
     }

@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 /**
  * Class which represents a child
  */
-public final class Child extends Person {
+public final class Child extends Person implements Visitable {
     private Integer id;
     private ArrayList<Double> niceScores;
     private ArrayList<Category> giftsPreferences;
@@ -35,6 +35,18 @@ public final class Child extends Person {
         this.giftsPreferences = new ArrayList<Category>(childInputData.getGiftsPreferences());
         this.niceScoreBonus = childInputData.getNiceScoreBonus();
         this.elf = childInputData.getElf();
+    }
+
+    /**
+     * Constructor for the Builder pattern
+     */
+    private Child(Builder builder) {
+        super(builder);
+        this.id = builder.id;
+        this.niceScores = builder.niceScores;
+        this.giftsPreferences = builder.giftsPreferences;
+        this.niceScoreBonus = builder.niceScoreBonus;
+        this.elf = builder.elf;
     }
 
     /**
@@ -97,6 +109,82 @@ public final class Child extends Person {
     public Category getFavoriteCategory() {
         // the child's favorite category is situated at index 0 in the gifts preferences list
         return giftsPreferences.get(0);
+    }
+
+    @Override
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
+
+    public static class Builder {
+        // mandatory
+        private String lastName;
+        private String firstName;
+        private Integer age;
+        private String city;
+        private Integer id;
+        private ArrayList<Double> niceScores;
+        private ArrayList<Category> giftsPreferences;
+        private ElvesType elf;
+
+        // optional
+        private Double niceScoreBonus = 0.0;
+
+        public Builder(final ChildInputData childInputData) {
+            this.lastName = childInputData.getLastName();
+            this.firstName = childInputData.getFirstName();
+            this.age = childInputData.getAge();
+            this.city = childInputData.getCity();
+            this.id = childInputData.getId();
+            this.niceScores = new ArrayList<Double>(List.of(childInputData.getNiceScore()));
+            this.giftsPreferences = new ArrayList<Category>(childInputData.getGiftsPreferences());
+            this.elf = childInputData.getElf();
+        }
+
+        public Builder withNiceScoreBonus(Double niceScoreBonus) {
+            this.niceScoreBonus = niceScoreBonus;
+            return this;
+        }
+
+        public Child build() {
+            return new Child(this);
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public Integer getId() {
+            return id;
+        }
+
+        public ArrayList<Double> getNiceScores() {
+            return niceScores;
+        }
+
+        public ArrayList<Category> getGiftsPreferences() {
+            return giftsPreferences;
+        }
+
+        public ElvesType getElf() {
+            return elf;
+        }
+
+        public Double getNiceScoreBonus() {
+            return niceScoreBonus;
+        }
     }
 
     public Integer getId() {

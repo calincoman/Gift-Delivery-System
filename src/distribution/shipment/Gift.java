@@ -1,5 +1,6 @@
 package distribution.shipment;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import enums.Category;
 import fileio.input.GiftInputData;
 
@@ -8,6 +9,8 @@ import fileio.input.GiftInputData;
  */
 public class Gift extends Product {
     private final Category category;
+    // ignore this field on Jackson serialization
+    @JsonIgnore
     private Integer quantity;
 
     /**

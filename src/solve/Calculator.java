@@ -5,6 +5,8 @@ import database.Database;
 import distribution.recipient.Child;
 import factory.ScoreStrategyFactory;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Map;
 
@@ -57,9 +59,9 @@ public final class Calculator {
      */
     public static double getAverageScoreSum() {
         return Database.getInstance().getChildren().stream()
+                .sorted(Comparator.comparing(Child::getId))
                 // for each child get its average score
-                .map(child -> ScoreStrategyFactory.getScoreStrategy(
-                        Utils.getScoreStrategyType(child)).getAverageScore(child))
+                .map(child -> Calculator.getChildAverageScore(child))
                 .mapToDouble(Double::doubleValue)
                 // calculate the sum of the transformed stream, now containing the average scores
                 .reduce(0, Double::sum);

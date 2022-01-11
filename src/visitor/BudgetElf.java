@@ -2,7 +2,7 @@ package visitor;
 
 import distribution.recipient.Child;
 
-public abstract class BudgetElf implements Visitor {
+public abstract class BudgetElf implements Visitor, Elf {
 
     public void modifyBudget(Child child) {}
 
