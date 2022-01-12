@@ -3,6 +3,7 @@ package distribution.shipment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import enums.Category;
 import fileio.input.GiftInputData;
+import solve.YearCounter;
 
 /**
  * Class representing a gift

@@ -30,5 +30,15 @@ public class CityNiceScoreGiftStrategy implements GiftAssigningStrategy {
         return Database.getInstance().getChildren().stream()
                 .sorted(multiComparator)
                 .collect(Collectors.toCollection(ArrayList::new));
+
+//        if (YearCounter.getInstance().getCurrentYear() == 2){
+//        for (Child child : sortedChildren) {
+//            System.out.println(child.getCity());
+//            System.out.println(Calculator.getCityAverageScore(child.getCity()));
+//            System.out.println(child.getId());
+//            System.out.println();
+//        }}
+//
+//        return sortedChildren;
     }
 }

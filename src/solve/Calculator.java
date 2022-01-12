@@ -74,7 +74,14 @@ public final class Calculator {
      * @return double containing the average score of a city
      */
     public static double getCityAverageScore(String city) {
-        return Database.getInstance().getChildren().stream()
+
+        // calculate the number of children from the given city
+        double childrenCount = (double) Database.getInstance().getChildren().stream()
+                .filter(child -> child.getCity().equals(city))
+                .count();
+
+        // calculate the sum of the childrens' average scores
+        double cityAverageScoreSum = Database.getInstance().getChildren().stream()
                 // get only the children from the city given as parameter
                 .filter(child -> child.getCity().equals(city))
                 .sorted(Comparator.comparing(Child::getId))
@@ -82,5 +89,7 @@ public final class Calculator {
                 .mapToDouble(Double::doubleValue)
                 // calculate the sum of the transformed stream, now containing the average scores
                 .reduce(0, Double::sum);
+
+        return cityAverageScoreSum / childrenCount;
     }
 }

@@ -27,7 +27,7 @@ public final class Utils {
     }
 
     /**
-     * Determines what gift strategy type must be used in the current year
+     * Determines what gift assigning strategy type must be used in the current year
      * @return the gift strategy type that must be used in the current year
      */
     public static GiftStrategyType getGiftStrategyType() {

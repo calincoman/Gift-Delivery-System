@@ -3,6 +3,7 @@ package database;
 import distribution.recipient.Child;
 import distribution.shipment.Gift;
 
+import enums.GiftStrategyType;
 import fileio.input.InputData;
 import status.change.AnnualChange;
 
@@ -38,6 +39,8 @@ public final class DatabaseLoader {
         Database.getInstance().getGifts().clear();
         Database.getInstance().getAnnualChanges().clear();
         Database.getInstance().getChildBudgets().clear();
+        Database.getInstance().getOutputData().getAnnualChildren().forEach(ArrayList::clear);
+        Database.getInstance().getOutputData().getAnnualChildren().clear();;
     }
 
     /**

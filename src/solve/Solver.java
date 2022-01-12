@@ -1,24 +1,23 @@
 package solve;
 
 import common.Constants;
-import common.Utils;
+
 import database.Database;
 import database.DatabaseLoader;
 import database.DatabaseUpdate;
-import distribution.shipment.Gift;
-import factory.ScoreStrategyFactory;
+
+import enums.GiftStrategyType;
+
 import fileio.input.InputData;
 import fileio.input.InputFormat;
 import fileio.input.InputLoader;
-import fileio.output.ChildOutputData;
+
 import fileio.output.OutputData;
 import fileio.output.OutputWriter;
-import status.change.AnnualChange;
-import status.update.ChildUpdate;
+
 import visitor.ElvesOperations;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Class which executes the simulation and runs the main flow of the program
@@ -88,6 +87,9 @@ public final class Solver {
         Database.getInstance().setOutputData(new OutputData(Database.getInstance()
                 .getNumberOfYears() + 1));
 
+        // in the first round the gift assigning strategy is by default by child ID
+        Database.getInstance().setGiftStrategy(GiftStrategyType.ID);
+
         // build and load in the database the child output data for the current year
         OutputDataBuilder.buildOutput();
         // assign gifts in the current year
@@ -96,7 +98,6 @@ public final class Solver {
         // apply the yellow elves to assign new gifts to some children
         ElvesOperations.sendGiftElves();
     }
-
 
     /**
      * Runs the rounds from the next years of the simulation
@@ -130,27 +131,6 @@ public final class Solver {
 
             // apply the yellow elves to assign new gifts to some children
             ElvesOperations.sendGiftElves();
-
-//            // the annual changes list is indexed from 0, so get the element from year - 1 position
-//            AnnualChange annualChange = Database.getInstance().getAnnualChanges().get(year - 1);
-//            // increase age of all children by 1
-//            databaseUpdate.increaseAge();
-//            // eliminate children that have become young adults
-//            databaseUpdate.eliminateYoungAdults();
-//
-//            // do the updates
-//            databaseUpdate.updateSantaBudget(annualChange.getNewSantaBudget());
-//            databaseUpdate.addNewGifts(annualChange.getNewGifts());
-//            databaseUpdate.addNewChildren(annualChange.getNewChildren());
-//            databaseUpdate.updateChildren(new ArrayList<ChildUpdate>(annualChange
-//                    .getChildrenUpdates()));
-//            databaseUpdate.updateGiftStrategy(annualChange.getGiftStrategy());
-//
-//            // calculate the budget for each child and store them in the database
-//            Database.getInstance().setChildBudgets(Calculator.getChildBudgets());
-
-            // calculate the output data for a child in a year and store it in the database
-            //loadChildOutputDataForYear(year);
         }
     }
 }

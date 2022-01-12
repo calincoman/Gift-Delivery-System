@@ -24,7 +24,7 @@ public class YellowElf extends GiftElf {
         if (gift == null) {
             return;
         }
-        if (gift.getQuantity() == 0) {
+        if (gift.getQuantity() <= 0) {
             return;
         }
 

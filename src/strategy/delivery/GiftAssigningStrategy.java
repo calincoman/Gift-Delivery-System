@@ -10,6 +10,7 @@ import factory.ScoreStrategyFactory;
 import fileio.output.ChildOutputData;
 import solve.YearCounter;
 
+import java.time.Year;
 import java.util.ArrayList;
 
 public interface GiftAssigningStrategy {
@@ -24,18 +25,6 @@ public interface GiftAssigningStrategy {
         // for each child, assign gifts to the corresponding output child
         sortedChildren.forEach(child -> DatabaseSearch.getOutputChildFromYearById(currentYear,
                 child.getId()).setReceivedGifts(assignGiftsToChild(child)));
-
-//        sortedChildren.forEach(child -> {
-//            Database.getInstance().getOutputData().getAnnualChildren().get(year)
-//                    .add(new ChildOutputData.Builder(child)
-//                            .withAverageScore(ScoreStrategyFactory.getScoreStrategy(
-//                                    Utils.getScoreStrategyType(child)).getAverageScore(child))
-//                            .withNiceScoreHistory(new ArrayList<Double>(child.getNiceScores()))
-//                            .withAssignedBudget(Database.getInstance().getChildBudgets()
-//                                    .get(child))
-//                            .withReceivedGifts(assignGiftsToChild(child))
-//                            .build());
-//        });
     }
 
     public default ArrayList<Gift> assignGiftsToChild(final Child child) {
@@ -46,10 +35,12 @@ public interface GiftAssigningStrategy {
 
         // iterate through the gift preferences of the child
         for (Category giftCategory : child.getGiftsPreferences()) {
+
             // get the cheapest gift in a category that has quantity greater than 0 and is
             // in the child's budget
             Gift gift = DatabaseSearch.getCheapestGiftInCategoryWithBudget(giftCategory,
                     childBudget);
+
             // if no gift with quantity > 0 of this category was found, go to the next gift
             // preference of the child
             if (gift == null) {
