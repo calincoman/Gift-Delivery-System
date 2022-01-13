@@ -8,7 +8,7 @@ import strategy.score.TeenScoreStrategy;
 import strategy.score.YoungAdultScoreStrategy;
 
 /**
- * Factory Class used for creating objects for the strategy pattern
+ * Factory Class used for creating score strategy objects
  */
 public final class ScoreStrategyFactory {
 
@@ -19,7 +19,7 @@ public final class ScoreStrategyFactory {
      * Creates and returns a Score Strategy object corresponding to the strategy type given as
      * parameter
      * @param scoreStrategyType an average score calculation strategy type
-     * @return strategy object
+     * @return score strategy object
      */
     public static ScoreStrategy getScoreStrategy(final ScoreStrategyType scoreStrategyType) {
         return switch (scoreStrategyType) {

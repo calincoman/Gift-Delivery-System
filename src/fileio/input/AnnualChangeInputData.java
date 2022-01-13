@@ -51,7 +51,7 @@ public final class AnnualChangeInputData {
         this.childrenUpdates = childrenUpdates;
     }
 
-    public void setStrategy(GiftStrategyType strategy) {
+    public void setStrategy(final GiftStrategyType strategy) {
         this.strategy = strategy;
     }
 }

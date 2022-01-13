@@ -14,7 +14,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CityNiceScoreGiftStrategy implements GiftAssigningStrategy {
+/**
+ * Strategy class used for city score gift assignment strategy
+ */
+public final class CityNiceScoreGiftStrategy implements GiftAssigningStrategy {
 
     @Override
     public ArrayList<Child> applyStrategy() {
@@ -25,20 +28,11 @@ public class CityNiceScoreGiftStrategy implements GiftAssigningStrategy {
         comparators.add(new CityNameComparator());
         comparators.add(new IdComparator());
 
-        MultiComparator multiComparator = new MultiComparator(comparators);
+        MultiComparator<Child> multiComparator = new MultiComparator<Child>(comparators);
 
+        // return children list sorted by the criteria mentioned above
         return Database.getInstance().getChildren().stream()
                 .sorted(multiComparator)
                 .collect(Collectors.toCollection(ArrayList::new));
-
-//        if (YearCounter.getInstance().getCurrentYear() == 2){
-//        for (Child child : sortedChildren) {
-//            System.out.println(child.getCity());
-//            System.out.println(Calculator.getCityAverageScore(child.getCity()));
-//            System.out.println(child.getId());
-//            System.out.println();
-//        }}
-//
-//        return sortedChildren;
     }
 }

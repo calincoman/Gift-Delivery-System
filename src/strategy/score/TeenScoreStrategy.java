@@ -1,5 +1,6 @@
 package strategy.score;
 
+import common.Constants;
 import distribution.recipient.Child;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class TeenScoreStrategy implements ScoreStrategy {
         averageScore = applyNiceScoreBonus(averageScore, child.getNiceScoreBonus());
 
         // truncate average score to 10
-        return (averageScore > 10) ? 10.0 : averageScore;
+        return (averageScore > Constants.AVERAGE_SCORE_MAX_VALUE)
+                ? Constants.AVERAGE_SCORE_MAX_VALUE : averageScore;
     }
 }

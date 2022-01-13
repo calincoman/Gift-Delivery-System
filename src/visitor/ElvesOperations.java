@@ -6,18 +6,31 @@ import database.DatabaseSearch;
 import factory.ElvesFactory;
 import solve.YearCounter;
 
+/**
+ * Class containing the elves actions
+ */
 public final class ElvesOperations {
 
+    /**
+     * Private constructor so that the class cannot be instantiated outside its scope
+     */
     private ElvesOperations() {
     }
 
+    /**
+     * Send the budget elves and apply their effects
+     */
     public static void sendBudgetElves() {
         Database.getInstance().getChildren().stream()
                 // get only children which have a budget elf
                 .filter(child -> Utils.isBudgetElf(child.getElf()))
+                // visit the filtered children
                 .forEach(child -> child.accept(ElvesFactory.getElf(child.getElf())));
     }
 
+    /**
+     * Send the gift elves and apply their effects
+     */
     public static void sendGiftElves() {
         int currentYear = YearCounter.getInstance().getCurrentYear();
 
@@ -26,6 +39,7 @@ public final class ElvesOperations {
                 .filter(child -> Utils.isGiftElf(child.getElf()))
                 .filter(child -> DatabaseSearch.getOutputChildFromYearById(currentYear,
                         child.getId()).getReceivedGifts().isEmpty())
+                // visit the filtered children
                 .forEach(child -> child.accept(ElvesFactory.getElf(child.getElf())));
     }
 }

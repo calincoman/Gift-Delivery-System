@@ -56,7 +56,7 @@ public final class DatabaseSearch {
     }
 
     /**
-     * Search in the database the cheapest gift from a given category which is in a budget asn
+     * Search in the database the cheapest gift from a given category which is in a budget and
      * has quantity greater than 0
      * @param category the category of the gift
      * @param budget the budget which the gift must hold

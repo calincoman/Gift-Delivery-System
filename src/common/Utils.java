@@ -39,11 +39,21 @@ public final class Utils {
         };
     }
 
-    public static boolean isBudgetElf(ElvesType elf) {
+    /**
+     * Determines if an elf is a budget elf or not
+     * @param elf ElvesType objects representing the elf
+     * @return true if the elf is a budget elf, false otherwise
+     */
+    public static boolean isBudgetElf(final ElvesType elf) {
         return (elf.equals(ElvesType.BLACK) || elf.equals(ElvesType.PINK));
     }
 
-    public static boolean isGiftElf(ElvesType elf) {
+    /**
+     * Determines if an elf is a gift elf or not
+     * @param elf ElvesType objects representing the elf
+     * @return true if the elf is a gift elf, false otherwise
+     */
+    public static boolean isGiftElf(final ElvesType elf) {
         return (elf.equals(ElvesType.YELLOW));
     }
 }

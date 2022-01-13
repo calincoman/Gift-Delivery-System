@@ -1,8 +1,10 @@
 package solve;
 
 import common.Constants;
-import database.Database;
 
+/**
+ * Singleton class used for keeping the evidence of the current year
+ */
 public final class YearCounter {
     private static YearCounter yearCounterInstance = null;
 
@@ -14,6 +16,10 @@ public final class YearCounter {
     private YearCounter() {
     }
 
+    /**
+     * Method which creates the only instance of the class if it didn't exist and returns it
+     * @return the only instance of the YearCounter class
+     */
     public static YearCounter getInstance() {
         if (yearCounterInstance == null) {
             yearCounterInstance = new YearCounter();
@@ -21,15 +27,22 @@ public final class YearCounter {
         return yearCounterInstance;
     }
 
+    /**
+     * Increases year by 1
+     */
     public void increaseYear() {
         ++year;
     }
 
+    /**
+     * Returns the current year
+     * @return the current year
+     */
     public Integer getCurrentYear() {
         return year;
     }
 
-    public void setYear(Integer year) {
+    public void setYear(final Integer year) {
         this.year = year;
     }
 }

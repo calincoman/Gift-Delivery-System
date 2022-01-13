@@ -7,10 +7,13 @@ import fileio.output.ChildOutputData;
 import solve.YearCounter;
 import visitor.GiftElf;
 
-public class YellowElf extends GiftElf {
+/**
+ * Class defining a black elf
+ */
+public final class YellowElf extends GiftElf {
 
     @Override
-    public void offerGift(Child child) {
+    public void offerGift(final Child child) {
 
         int year = YearCounter.getInstance().getCurrentYear();
 

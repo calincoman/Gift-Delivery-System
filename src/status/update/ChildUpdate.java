@@ -17,7 +17,7 @@ public final class ChildUpdate {
     private ElvesType elf;
 
     /**
-     * Constructor which loads the data for a child output into the object
+     * Constructor which loads the data for a child update into the object
      */
     public ChildUpdate(final ChildUpdateInputData childUpdateInputData) {
         this.id = childUpdateInputData.getId();

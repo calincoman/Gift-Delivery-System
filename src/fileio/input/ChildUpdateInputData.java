@@ -3,7 +3,6 @@ package fileio.input;
 import enums.Category;
 import enums.ElvesType;
 
-import java.lang.annotation.ElementType;
 import java.util.List;
 
 /**
@@ -44,7 +43,7 @@ public final class ChildUpdateInputData {
         this.giftsPreferences = giftsPreferences;
     }
 
-    public void setElf(ElvesType elf) {
+    public void setElf(final ElvesType elf) {
         this.elf = elf;
     }
 }

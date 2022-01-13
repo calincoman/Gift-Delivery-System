@@ -4,10 +4,14 @@ import distribution.recipient.Child;
 
 import java.util.Comparator;
 
-public class CityNameComparator implements Comparator<Child> {
+/**
+ * Comparator class which compares two children by the name of the city they belong to
+ * (lexicographically)
+ */
+public final class CityNameComparator implements Comparator<Child> {
 
     @Override
-    public int compare(Child child1, Child child2) {
+    public int compare(final Child child1, final Child child2) {
 
         return child1.getCity().compareTo(child2.getCity());
     }

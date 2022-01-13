@@ -1,23 +1,30 @@
 package strategy.delivery;
 
-import common.Utils;
 import database.Database;
 import database.DatabaseSearch;
 import distribution.recipient.Child;
 import distribution.shipment.Gift;
 import enums.Category;
-import factory.ScoreStrategyFactory;
-import fileio.output.ChildOutputData;
+
 import solve.YearCounter;
 
-import java.time.Year;
 import java.util.ArrayList;
 
+/**
+ * Interface defining a gift assignment strategy
+ */
 public interface GiftAssigningStrategy {
 
-    public ArrayList<Child> applyStrategy();
+    /**
+     * This method is overridden in the strategy classes which implement this interface
+     * @return list of children sorted by the criteria specific to each gift assignment strategy
+     */
+    ArrayList<Child> applyStrategy();
 
-    public default void assignGifts() {
+    /**
+     * Assigns gifts to the output children
+     */
+    default void assignGifts() {
 
         ArrayList<Child> sortedChildren = applyStrategy();
         int currentYear = YearCounter.getInstance().getCurrentYear();
@@ -27,7 +34,12 @@ public interface GiftAssigningStrategy {
                 child.getId()).setReceivedGifts(assignGiftsToChild(child)));
     }
 
-    public default ArrayList<Gift> assignGiftsToChild(final Child child) {
+    /**
+     * Assigns gifts to a child
+     * @param child child which receives gifts
+     * @return list containing the gifts assigned to the child given as parameter
+     */
+    default ArrayList<Gift> assignGiftsToChild(final Child child) {
 
         ArrayList<Gift> receivedGifts = new ArrayList<Gift>();
         // get the child's assigned budget

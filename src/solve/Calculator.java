@@ -5,23 +5,26 @@ import database.Database;
 import distribution.recipient.Child;
 import factory.ScoreStrategyFactory;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Map;
 
 import java.util.stream.Collectors;
 
 /**
- * Class used to calculate the budgets assigned to each child, the budget unit and
- * the average score sum
+ * Class used to calculate different results in the program
  */
 public final class Calculator {
 
     private Calculator() {
     }
 
-    public static double getChildAverageScore(Child child) {
+    /**
+     * Calculates the average score of the child given as parameter
+     * @param child the child whose average score needs to be calculated
+     * @return double representing the average score of the child
+     */
+    public static double getChildAverageScore(final Child child) {
+        // use the corresponding strategy to calculate the average score of the child
         return ScoreStrategyFactory.getScoreStrategy(
                 Utils.getScoreStrategyType(child)).getAverageScore(child);
     }
@@ -38,9 +41,7 @@ public final class Calculator {
         return Database.getInstance().getChildren().stream()
                 // create the map with a child as key and its budget as value
                 .collect(Collectors.toMap(child -> child, child -> budgetUnit
-                        // use the corresponding strategy to calculate the average score
-                        * ScoreStrategyFactory .getScoreStrategy(Utils.getScoreStrategyType(child))
-                        .getAverageScore(child)));
+                        * getChildAverageScore(child)));
     }
 
     /**
@@ -73,7 +74,7 @@ public final class Calculator {
      * @param city the city whose average score needs to be calculated
      * @return double containing the average score of a city
      */
-    public static double getCityAverageScore(String city) {
+    public static double getCityAverageScore(final String city) {
 
         // calculate the number of children from the given city
         double childrenCount = (double) Database.getInstance().getChildren().stream()

@@ -113,8 +113,8 @@ public final class Solver {
 
             // increment year
             YearCounter.getInstance().increaseYear();
-            //System.out.println(YearCounter.getInstance().getCurrentYear());
 
+            // update the database using the annual change from the current year
             databaseUpdate.updateAllData();
 
             // calculate the budget for each child and store them in the database

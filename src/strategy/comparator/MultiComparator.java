@@ -1,22 +1,28 @@
 package strategy.comparator;
 
-import distribution.recipient.Child;
-
 import java.util.Comparator;
 import java.util.List;
 
-public class MultiComparator implements Comparator<Child> {
-    private List<Comparator<Child>> comparators;
+/**
+ * Generic Comparator class which contains a list of comparators and compares two objects
+ * by the comparators from the list
+ * Useful when wanting to sort by multiple criteria
+ */
+public final class MultiComparator<T> implements Comparator<T> {
+    // the list of comparators
+    private final List<Comparator<T>> comparators;
 
-    public MultiComparator(List<Comparator<Child>> comparators) {
+    public MultiComparator(final List<Comparator<T>> comparators) {
         this.comparators = comparators;
     }
 
-    public int compare(Child child1, Child child2) {
-        for (Comparator<Child> comparator : comparators) {
-            int comparison = comparator.compare(child1, child2);
-            if (comparison != 0) {
-                return comparison;
+    @Override
+    public int compare(final T o1, final T o2) {
+        // iterate through each comparator in the order they were added and compare the objects
+        for (Comparator<T> comparator : comparators) {
+            int comparisonResult = comparator.compare(o1, o2);
+            if (comparisonResult != 0) {
+                return comparisonResult;
             }
         }
         return 0;

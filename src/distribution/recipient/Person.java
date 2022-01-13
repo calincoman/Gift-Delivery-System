@@ -21,6 +21,9 @@ public abstract class Person {
         this.city = childInputData.getCity();
     }
 
+    /**
+     * Constructor which creates a Person object from the child builder
+     */
     public Person(final Child.Builder childBuilder) {
         this.lastName = childBuilder.getLastName();
         this.firstName = childBuilder.getFirstName();
@@ -49,21 +52,5 @@ public abstract class Person {
 
     public final String getCity() {
         return city;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 }

@@ -40,7 +40,7 @@ public final class Child extends Person implements Visitable {
     /**
      * Constructor for the Builder pattern
      */
-    private Child(Builder builder) {
+    private Child(final Builder builder) {
         super(builder);
         this.id = builder.id;
         this.niceScores = builder.niceScores;
@@ -111,12 +111,16 @@ public final class Child extends Person implements Visitable {
         return giftsPreferences.get(0);
     }
 
+    /**
+     * Accept method for the Visitor pattern
+     * @param v the visitor
+     */
     @Override
-    public void accept(Visitor v) {
+    public void accept(final Visitor v) {
         v.visit(this);
     }
 
-    public static class Builder {
+    public static final class Builder {
         // mandatory
         private String lastName;
         private String firstName;
@@ -130,6 +134,9 @@ public final class Child extends Person implements Visitable {
         // optional
         private Double niceScoreBonus = 0.0;
 
+        /**
+         * Constructor for the Builder nested class
+         */
         public Builder(final ChildInputData childInputData) {
             this.lastName = childInputData.getLastName();
             this.firstName = childInputData.getFirstName();
@@ -141,11 +148,19 @@ public final class Child extends Person implements Visitable {
             this.elf = childInputData.getElf();
         }
 
-        public Builder withNiceScoreBonus(Double niceScoreBonus) {
-            this.niceScoreBonus = niceScoreBonus;
+        /**
+         * Returns a Builder instance which has the niceScoreBonus set
+         * @param niceScoreBonus the nice score bonus to be set
+         * @return Builder object with a niceScoreBonus added
+         */
+        public Builder withNiceScoreBonus(final Double pNiceScoreBonus) {
+            this.niceScoreBonus = pNiceScoreBonus;
             return this;
         }
 
+        /**
+         * Creates a new Child object with the data from the current Builder
+         */
         public Child build() {
             return new Child(this);
         }
@@ -219,11 +234,11 @@ public final class Child extends Person implements Visitable {
         this.giftsPreferences = giftsPreferences;
     }
 
-    public void setNiceScoreBonus(Double niceScoreBonus) {
+    public void setNiceScoreBonus(final Double niceScoreBonus) {
         this.niceScoreBonus = niceScoreBonus;
     }
 
-    public void setElf(ElvesType elf) {
+    public void setElf(final ElvesType elf) {
         this.elf = elf;
     }
 }

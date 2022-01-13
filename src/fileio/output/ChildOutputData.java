@@ -153,43 +153,43 @@ public final class ChildOutputData {
         return receivedGifts;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
-    public void setCity(String city) {
+    public void setCity(final String city) {
         this.city = city;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(final Integer age) {
         this.age = age;
     }
 
-    public void setGiftsPreferences(ArrayList<Category> giftsPreferences) {
+    public void setGiftsPreferences(final ArrayList<Category> giftsPreferences) {
         this.giftsPreferences = giftsPreferences;
     }
 
-    public void setAverageScore(Double averageScore) {
+    public void setAverageScore(final Double averageScore) {
         this.averageScore = averageScore;
     }
 
-    public void setNiceScoreHistory(ArrayList<Double> niceScoreHistory) {
+    public void setNiceScoreHistory(final ArrayList<Double> niceScoreHistory) {
         this.niceScoreHistory = niceScoreHistory;
     }
 
-    public void setAssignedBudget(Double assignedBudget) {
+    public void setAssignedBudget(final Double assignedBudget) {
         this.assignedBudget = assignedBudget;
     }
 
-    public void setReceivedGifts(ArrayList<Gift> receivedGifts) {
+    public void setReceivedGifts(final ArrayList<Gift> receivedGifts) {
         this.receivedGifts = receivedGifts;
     }
 }

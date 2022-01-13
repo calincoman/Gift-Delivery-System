@@ -13,7 +13,7 @@ import java.util.Comparator;
 /**
  * Class which contains methods for updating the data from the Database
  */
-public class DatabaseUpdate {
+public final class DatabaseUpdate {
     /**
      * Increases age of all children from the database by 1
      */
@@ -30,6 +30,9 @@ public class DatabaseUpdate {
         Database.getInstance().getChildren().removeIf(child -> child.isYoungAdult());
     }
 
+    /**
+     * Updates all data from the database using the annual change from the current year
+     */
     public void updateAllData() {
         // get current year
         Integer currentYear = YearCounter.getInstance().getCurrentYear();
@@ -100,6 +103,10 @@ public class DatabaseUpdate {
         });
     }
 
+    /**
+     * Updates the gift strategy in the database
+     * @param newGiftStrategy the new gift strategy
+     */
     public void updateGiftStrategy(final GiftStrategyType newGiftStrategy) {
         Database.getInstance().setGiftStrategy(newGiftStrategy);
     }

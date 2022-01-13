@@ -40,7 +40,7 @@ public final class GiftInputData {
         this.category = category;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(final Integer quantity) {
         this.quantity = quantity;
     }
 }

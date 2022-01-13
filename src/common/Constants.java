@@ -17,8 +17,11 @@ public final class Constants {
     public static final Integer KID_MAX_AGE = 11;
     public static final Integer TEEN_MAX_AGE = 18;
     public static final Integer FIRST_YEAR = 0;
+    public static final Integer HUNDRED = 100;
+    public static final Integer BUDGET_ELF_PERCENTAGE = 30;
 
     public static final Double DEFAULT_BABY_SCORE = 10.0;
+    public static final Double AVERAGE_SCORE_MAX_VALUE = 10.0;
 
     private Constants() {
         //constructor for checkstyle

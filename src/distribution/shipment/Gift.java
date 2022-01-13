@@ -3,12 +3,11 @@ package distribution.shipment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import enums.Category;
 import fileio.input.GiftInputData;
-import solve.YearCounter;
 
 /**
  * Class representing a gift
  */
-public class Gift extends Product {
+public final class Gift extends Product {
     private final Category category;
     // ignore this field on Jackson serialization
     @JsonIgnore
@@ -23,11 +22,14 @@ public class Gift extends Product {
         this.quantity = giftInputData.getQuantity();
     }
 
+    /**
+     * Decreases quantity of gift by 1
+     */
     public void decreaseQuantity() {
         --quantity;
     }
 
-    public final Category getCategory() {
+    public Category getCategory() {
         return category;
     }
 
@@ -35,7 +37,7 @@ public class Gift extends Product {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(final Integer quantity) {
         this.quantity = quantity;
     }
 }

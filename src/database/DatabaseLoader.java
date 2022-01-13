@@ -3,7 +3,6 @@ package database;
 import distribution.recipient.Child;
 import distribution.shipment.Gift;
 
-import enums.GiftStrategyType;
 import fileio.input.InputData;
 import status.change.AnnualChange;
 
@@ -39,8 +38,6 @@ public final class DatabaseLoader {
         Database.getInstance().getGifts().clear();
         Database.getInstance().getAnnualChanges().clear();
         Database.getInstance().getChildBudgets().clear();
-        Database.getInstance().getOutputData().getAnnualChildren().forEach(ArrayList::clear);
-        Database.getInstance().getOutputData().getAnnualChildren().clear();;
     }
 
     /**
@@ -50,9 +47,6 @@ public final class DatabaseLoader {
     public static void loadChildren(final InputData inputData) {
         ArrayList<Child> children = new ArrayList<Child>();
 
-//        // make a deep copy
-//        inputData.getChildren().forEach(childInputData ->
-//                children.add(new Child(childInputData)));
         // make a depp copy
         inputData.getChildren().forEach(childInputData ->
                 children.add(new Child.Builder(childInputData)

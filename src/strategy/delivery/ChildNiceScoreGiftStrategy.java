@@ -2,7 +2,7 @@ package strategy.delivery;
 
 import database.Database;
 import distribution.recipient.Child;
-import distribution.shipment.Gift;
+
 import strategy.comparator.IdComparator;
 import strategy.comparator.MultiComparator;
 import strategy.comparator.NiceScoreComparator;
@@ -12,7 +12,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ChildNiceScoreGiftStrategy implements GiftAssigningStrategy {
+/**
+ * Strategy class used for child score gift assignment strategy
+ */
+public final class ChildNiceScoreGiftStrategy implements GiftAssigningStrategy {
 
     @Override
     public ArrayList<Child> applyStrategy() {
@@ -22,7 +25,7 @@ public class ChildNiceScoreGiftStrategy implements GiftAssigningStrategy {
         comparators.add(new NiceScoreComparator());
         comparators.add(new IdComparator());
 
-        MultiComparator multiComparator = new MultiComparator(comparators);
+        MultiComparator<Child> multiComparator = new MultiComparator<Child>(comparators);
 
         return Database.getInstance().getChildren().stream()
                 .sorted(multiComparator)
