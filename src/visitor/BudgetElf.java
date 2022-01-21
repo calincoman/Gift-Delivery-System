@@ -10,7 +10,7 @@ public abstract class BudgetElf implements Visitor, Elf {
 
     /**
      * Modifies the budget of the child given as parameter
-     * Is overridden in the budget elf subclasses which extends this class (BlackELf, PinkElf)
+     * Is overridden in the budget elf subclasses which extend this class (BlackELf, PinkElf)
      * @param child child whose budget will be modified
      */
     public void modifyBudget(final Child child) {

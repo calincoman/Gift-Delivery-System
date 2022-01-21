@@ -2,9 +2,11 @@ package fileio.output;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import common.Constants;
 import database.Database;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -50,6 +52,20 @@ public final class OutputWriter {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+    }
+
+    /**
+     * Creates the output directory in the current folder
+     */
+    public static void createOutputDirectory() throws IOException {
+        File outputDirectory = new File(Constants.OUTPUT_FOLDER);
+        if (outputDirectory.exists()) {
+            return;
+        }
+        if (outputDirectory.mkdir()) {
+            return;
+        }
+        throw new IOException("Failed to create output directory");
     }
 
 }

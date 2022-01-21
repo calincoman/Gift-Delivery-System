@@ -12,6 +12,7 @@ public final class Constants {
     public static final Integer TESTS_NUMBER_SMALL = 15;
 
     public static final String INPUT_PATH = "tests/test";
+    public static final String OUTPUT_FOLDER = "output";
 
     public static final Integer BABY_MAX_AGE = 4;
     public static final Integer KID_MAX_AGE = 11;

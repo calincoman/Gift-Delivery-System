@@ -33,6 +33,9 @@ public final class Solver {
      */
     public static void execute() throws IOException {
 
+        // create the output directory where to put the result json files
+        OutputWriter.createOutputDirectory();
+
         // iterate through the tests
         for (Integer fileIndex = 1; fileIndex <= Constants.TESTS_NUMBER; ++fileIndex) {
 

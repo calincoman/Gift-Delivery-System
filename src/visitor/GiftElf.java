@@ -9,8 +9,8 @@ import distribution.recipient.Child;
 public abstract class GiftElf implements Visitor, Elf {
 
     /**
-     * Offers a gift the child given as parameter
-     * Is overridden in the gift elf subclasses which extends this class (YellowElf)
+     * Offers a gift to the child given as parameter
+     * Is overridden in the gift elf subclasses which extend this class (YellowElf)
      * @param child child whose budget will be modified
      */
     public void offerGift(final Child child) {

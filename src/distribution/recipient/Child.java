@@ -150,7 +150,7 @@ public final class Child extends Person implements Visitable {
 
         /**
          * Returns a Builder instance which has the niceScoreBonus set
-         * @param niceScoreBonus the nice score bonus to be set
+         * @param pNiceScoreBonus the nice score bonus to be set
          * @return Builder object with a niceScoreBonus added
          */
         public Builder withNiceScoreBonus(final Double pNiceScoreBonus) {

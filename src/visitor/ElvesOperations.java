@@ -18,7 +18,7 @@ public final class ElvesOperations {
     }
 
     /**
-     * Send the budget elves and apply their effects
+     * Sends the budget elves and applies their effects
      */
     public static void sendBudgetElves() {
         Database.getInstance().getChildren().stream()
@@ -29,7 +29,7 @@ public final class ElvesOperations {
     }
 
     /**
-     * Send the gift elves and apply their effects
+     * Sends the gift elves and applies their effects
      */
     public static void sendGiftElves() {
         int currentYear = YearCounter.getInstance().getCurrentYear();
