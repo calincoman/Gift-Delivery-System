@@ -1,4 +1,4 @@
-# Santa's Gift Project 2nd Stage - Coman Calin-Alexandru 321CA
+#Gift Delivery System
 
 ## Package Structure and Class Description
 
